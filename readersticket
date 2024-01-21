@@ -11,7 +11,7 @@
 
 class readersticket
 {
-    publick string reader:readers_ticket;
+    publick int reader:readers_ticket;
     public string taken_list;
     public string returned_list;
     public string booked_list;
