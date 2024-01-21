@@ -11,7 +11,7 @@
 
 class readersticket
 {
-    publick int reader:readers_ticket;
+    public int reader:readers_ticket;
     public string taken_list;
     public string returned_list;
     public string booked_list;
@@ -24,4 +24,5 @@ class readersticket
 
    // тело конструктора
    // (инициализация полей класса)
+}
 }
