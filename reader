@@ -10,11 +10,16 @@
 
 class reader
 {
-    
-// поля класса
+    privat string user:id;
+    public string FIO;
+    public string birthday;
+    public string tel_num;
+    public string readers_ticket;
+    // поля класса
+
 доступ тип имя;
 …
-
+ 
 // конструкторы класса
 доступ имя_класса(список формальных параметров)
   {
