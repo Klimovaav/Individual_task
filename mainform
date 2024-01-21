@@ -13,11 +13,10 @@
  - оформление приёма книги */
 
 
-class readersticket
+class mainform
 {
-    publick int book:book_id;
-    public string book_status;
-    publick int reader:readers_ticket;
+    public string books_list;
+    public string readers_list;
     // поля класса
 
 доступ тип имя;
