@@ -11,7 +11,7 @@ class user
 {
     private string login;
     private string parol;
-    private string id;
+    private int id;
     // поля класса
 
     // конструкторы класса
