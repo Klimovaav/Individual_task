@@ -10,7 +10,7 @@
 
 class reader
 {
-    privat string user:id;
+    privat int user:id;
     public string FIO;
     public string birthday;
     public string tel_num;
