@@ -8,9 +8,9 @@
 
 class readersticket
 {
-    publick int book:book_id;
+    public int book:book_id;
     public string book_status;
-    publick int reader:readers_ticket;
+    public int reader:readers_ticket;
     // поля класса
 
 // конструкторы класса
@@ -19,4 +19,5 @@ class readersticket
 
    // тело конструктора
    // (инициализация полей класса)
+}
 }
