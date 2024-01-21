@@ -15,7 +15,7 @@ class readersticket
     public string taken_list;
     public string returned_list;
     public string booked_list;
-    public string status;
+    public string readers_status;
     // поля класса
 
 доступ тип имя;
