@@ -8,7 +8,9 @@
 
 class readersticket
 {
-    publick string ;
+    publick int book:book_id;
+    public string book_status;
+    publick int reader:readers_ticket;
     // поля класса
 
 доступ тип имя;
