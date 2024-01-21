@@ -14,11 +14,11 @@ class user
     private int id;
     // поля класса
 
- // конструкторы класса
-доступ имя_класса(список формальных параметров)
-  {
-
-   // тело конструктора
-   // (инициализация полей класса)
-}
+    // конструктор
+    private user(string MyLogin, string MyParol, int MyID)
+    {
+        login = MyLogin;
+        parol = MyParol;
+        id = MyID;
+    }
 }
