@@ -10,10 +10,10 @@
 
 class book
 {
-    publick int book_id;
-    publick string book_name;
-    publick string autor;
-    publick string publishers_code;
+    public int book_id;
+    public string book_name;
+    public string autor;
+    public string publishers_code;
     // тк не знаю, как могут выглядеть коды издательств, оставила тип поля string
     publick string description;
     // поля класса
@@ -24,4 +24,5 @@ class book
 
    // тело конструктора
    // (инициализация полей класса)
+}
 }
