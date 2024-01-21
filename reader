@@ -14,7 +14,7 @@ class reader
     public string FIO;
     public string birthday;
     public string tel_num;
-    public string readers_ticket;
+    public int readers_ticket;
     // поля класса
 
 доступ тип имя;
