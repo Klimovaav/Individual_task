@@ -19,10 +19,11 @@
         public string publishersCode;
         public string description;
         public string statusBook;
+        public int Reader:id;
         // поля класса
 
 
-        public Book(int id, string bookName, string autor, string publishersCode, string description) // конструктор класса с параметрами
+        public Book(int id, string bookName, string autor, string publishersCode, string description, int Reader:id) // конструктор класса с параметрами
         {
             this.id = id;
             this.bookName = bookName;
@@ -30,5 +31,6 @@
             this.publishersCode = publishersCode;
             this.description = description;
             statusBook = "В библиотеке";
+            this.Reader:id = Reader:id;
         }
     }
