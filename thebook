@@ -8,21 +8,35 @@
 /* Тут хранится информация о содержании книги, без связи с читателями. 
 Идентификатор выдаётся автоматически при добавлении книги, а всё остальное можно поменять. */
 
-class book
-{
-    public int book_id;
-    public string book_name;
-    public string autor;
-    public string publishers_code;
-    // тк не знаю, как могут выглядеть коды издательств, оставила тип поля string
-    publick string description;
-    // поля класса
 
-// конструкторы класса
-доступ имя_класса(список формальных параметров)
-  {
+    class Book
+    {
+        public int id;
+        public string bookName;
+        public string autor;
+        public string publishersCode;
+        public string description;
+        public string statusBook;
+        // поля класса
 
-   // тело конструктора
-   // (инициализация полей класса)
-}
-}
+
+        public Book() //необязательный начальный конструктор без параметров, в теории можно удалить
+        {
+            id = 0;
+            bookName = "Название книги";
+            autor = "ФИО автора";
+            publishersCode = "Код публикации";
+            description = "Описание";
+            statusBook = "В библиотеке";
+        }
+
+        public Book(int id, string bookName, string autor, string publishersCode, string description) //перегруженный конструктор с параметрами
+        {
+            this.id = id;
+            this.bookName = bookName;
+            this.autor = autor;
+            this.publishersCode = publishersCode;
+            this.description = description;
+            statusBook = "В библиотеке";
+        }
+    }
