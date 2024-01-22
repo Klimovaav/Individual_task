@@ -8,21 +8,34 @@
 /* В этом классе хранятся личные данные читателя. Идентификатором Читатель привязан к классу Пользователь. 
 Номер читательского билета привязывает к классу Читатель класс Читательский билет. Вся информация о взятых и забронированных книгах находится в Читательском билете. */
 
-class reader
-{
-    privat int user:id;
-    public string FIO;
-    public string birthday;
-    public string tel_num;
-    public int readers_ticket;
-    // поля класса
 
+    public class Reader
+    {
+        public int id;
+        public string fio;
+        public string dBirthday;
+        public string telNumber;
+        public int readerTicket;
+        public string[] currentBooks;
+        public string[] lastBooks;
 
-// конструкторы класса
-доступ имя_класса(список формальных параметров)
-  {
+        public Reader() //в конструкторе не объявлены данные о текущих взятых книгах и о прошлых взятых книгах. Из логики, что при заведении нового читателя он еще ничего не брал
+        {
+            id = 0;
+            fio = "ФИО читателя";
+            dBirthday = "Дата рождения";
+            telNumber = "Контактный номер";
+            readerTicket = 0;
+        }
 
-   // тело конструктора
-   // (инициализация полей класса)
+        public Reader(int id, string fio, string dBirthday, string telNumber, int readerTicket)
+        {
+            this.id = id;
+            this.fio = fio;
+            this.dBirthday = dBirthday;
+            this.telNumber = telNumber;
+            this.readerTicket = readerTicket;
+        }
+    }
 }
-}
+
