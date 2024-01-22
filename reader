@@ -22,15 +22,18 @@
         public int readerTicket;
         public string[] currentBooks;
         public string[] lastBooks;
+        public string[] bookedBooks;
+        public string statusReader;
         // поля класса
 
-        public Reader() // в конструкторе не объявлены данные о текущих взятых книгах и о прошлых взятых книгах, потому что новый пользователь создаётся с чистой историей
+        public Reader() // в конструкторе не объявлены данные о текущих, прошлых и забронированных книгах, потому что новый пользователь создаётся с чистой историей
         {
             id = 0;
             fio = "ФИО читателя";
             dBirthday = "Дата рождения";
             telNumber = "Контактный номер";
             readerTicket = 0;
+            statusReader = "книг нет";
         }
 
         public Reader(int id, string fio, string dBirthday, string telNumber, int readerTicket)
@@ -40,6 +43,7 @@
             this.dBirthday = dBirthday;
             this.telNumber = telNumber;
             this.readerTicket = readerTicket;
+            this.statusReader = statusReader;
         }
     }
 }
