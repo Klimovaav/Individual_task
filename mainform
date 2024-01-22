@@ -12,33 +12,229 @@
  - оформление выдачи книги;
  - оформление приёма книги */
 
+// Смогла реализовать только часть методов
 
-class mainform
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp2
 {
-    public string books_list;
-    public string readers_list;
-    // поля класса
+    internal class Mainform
+    {
 
-доступ тип имя;
-…
- 
-// конструкторы класса
-доступ имя_класса(список формальных параметров)
-  {
+        static void Main(string[] args)
+        {
+            List<Book> booksList = new List<Book>();
+            List<Reader> readersList = new List<Reader>();
+          
+            CreateStartBookBase(booksList);
+            CreateStartReadersBase(readersList);
 
-   // тело конструктора
-   // (инициализация полей класса)
+            ShowMenu(booksList, readersList);
+        }
 
-  }
+        //Открыть меню после при начале работы программы или после выполненного библеотекарем действия
+        static void ShowMenu(List<Book> booksList, List<Reader> readersList)
+        {
+            Console.Write("\n\n****************************************\nМеню\n1. Отобразить все книги\n2. Отобразить всех читателей\n3. Добавить книгу\n4. Редактировать книгу\n\n");
+            ControlMenu(booksList, readersList);
+        }
 
-// методы класса
-доступ тип_возвращаемого_значения имя_метода(формальные параметры)
-  {
+        //Функция управления меню после выбора пользователем нужного пункта
+        static void ControlMenu(List<Book> booksList, List<Reader> readersList)
+        {
+            string s;
+            switch (s = Console.ReadLine())
+            {
+                case "1":
+                    ShowAllBooks(booksList);
+                    ShowMenu(booksList, readersList);
+                    break;
+                case "2":
+                    ShowAllReaders(readersList);
+                    ShowMenu(booksList, readersList);
+                    break;
+                case "3":
+                    AddBook(booksList);
+                    ShowMenu(booksList, readersList);
+                    break;
+                case "4":
+                    EditBook(booksList, readersList);
+                    ShowMenu(booksList, readersList);
+                    break;
+                default:
+                    Console.WriteLine("Неизвестная команда, введите корректное значение");
+                    ControlMenu(booksList, readersList);
+                    break;
+            }
+        }
 
-   // тело метода
+        //Редактирование книги
+        static void EditBook(List<Book> booksList, List<Reader> readersList)
+        {
+            Console.Write("\nВведите id книги для редактирования: ");
+            string s = Console.ReadLine();
+            int i = System.Convert.ToInt32(s);
+            Console.Write("\nВыберите поле для редактирования:\n1. Название\n2. Автор\n3. Код публикации\n4. Описание\n\n");
+            string st = Console.ReadLine();
+            Console.Write("\nВведите обновленную информацию: ");
+            string str = Console.ReadLine();
+            switch (st)
+            {
+                case "1":
+                    booksList
+                        .FindAll(k => k.id == i)
+                        .ForEach(x => x.bookName = str);
+                    break;
+                case "2":
+                    booksList
+                        .FindAll(k => k.id == i)
+                        .ForEach(x => x.autor = str);
+                    break;
+                case "3":
+                    booksList
+                        .FindAll(k => k.id == i)
+                        .ForEach(x => x.publishersCode = str);
+                    break;
+                case "4":
+                    booksList
+                        .FindAll(k => k.id == i)
+                        .ForEach(x => x.description = str);
+                    break;
+                default:
+                    Console.WriteLine("Ошибка");
+                    ControlMenu(booksList, readersList);
+                    break;
+            }
+        }
 
-  }
+        //Добавление новой книги
+        static void AddBook(List<Book> booksList)
+        {
+            Book NewBook = new Book();
+            NewBook.id = booksList.Count + 1;
+            Console.Write("\nВведите название книги: ");
+            NewBook.bookName = Console.ReadLine();
+            Console.Write("Введите автора: ");
+            NewBook.autor = Console.ReadLine();
+            Console.Write("Введите код публикации: ");
+            NewBook.publishersCode = Console.ReadLine();
+            Console.Write("Введите описание книги: ");
+            NewBook.description = Console.ReadLine();
+            Console.Write("Введите описание книги: \n");
+            booksList.Add(NewBook);
+        }
 
-…
+        //Создание начальной базы с книгами
+        static void CreateStartBookBase(List<Book> booksList)
+        {
+            Book CrimeAndPunishmen = new Book(1, "Преступление и наказание", "Федор Достоевский", "К-124", "Крутая книга");
+            Book We = new Book(2, "Мы", "Евгений Замятин", "С-124021", "Просто Вау!!!");
+            Book Lolita = new Book(3, "Лолита", "Владимир Набоков", "12312", "Легендарно");
+            booksList.Add(CrimeAndPunishmen);
+            booksList.Add(We);
+            booksList.Add(Lolita);
+        }
 
+        //Создание начальной базы читателей
+        static void CreateStartReadersBase(List<Reader> readersList)
+        {
+            Reader ISN = new Reader(1, "Иванов Сергей Николаевич", "19.04.1992", "79267459234", 122143);
+            Reader PAS = new Reader(2, "Пушкина Анастасия Сергеевна", "23.09.1997", "+79379242223", 412341);
+            Reader KAS = new Reader(2, "Кузнецов Алексей Степанович", "04.10.1974", "89358450293", 1412456);
+            readersList.Add(ISN);
+            readersList.Add(PAS);
+            readersList.Add(KAS);
+        }
+
+        //Вывести на экран все книги
+        static void ShowAllBooks(List<Book> booksList)
+        {
+            Console.WriteLine("\n----------------------------------------\n");
+            foreach (Book c in booksList)
+            {
+                Console.WriteLine("--{0}---{1}---{2}---{3}---{4}--{5}--\n", c.id, c.bookName, c.autor, c.publishersCode, c.description, c.statusBook);
+            }
+            Console.WriteLine("----------------------------------------\n");
+        }
+
+        //Вывести на экран всех читателей
+        static void ShowAllReaders(List<Reader> readersList)
+        {
+            Console.WriteLine("\n----------------------------------------\n");
+            foreach (Reader r in readersList)
+            {
+                Console.WriteLine("--{0}---{1}---{2}---{3}---{4}---{5}---{6}--\n", r.id, r.fio, r.dBirthday, r.telNumber, r.readerTicket, r.currentBooks, r.lastBooks); ;
+            }
+            Console.WriteLine("----------------------------------------\n");
+        }
+    }
+
+
+    //класс книг
+    class Book
+    {
+        public int id;
+        public string bookName;
+        public string autor;
+        public string publishersCode;
+        public string description;
+        public string statusBook;
+
+
+        public Book() //необязательный начальный конструктор без параметров, в теории можно удалить
+        {
+            id = 0;
+            bookName = "Название книги";
+            autor = "ФИО автора";
+            publishersCode = "Код публикации";
+            description = "Описание";
+            statusBook = "В библиотеке";
+        }
+
+        public Book(int id, string bookName, string autor, string publishersCode, string description) //перегруженный конструктор с параметрами
+        {
+            this.id = id;
+            this.bookName = bookName;
+            this.autor = autor;
+            this.publishersCode = publishersCode;
+            this.description = description;
+            statusBook = "В библиотеке";
+        }
+    }
+
+
+
+    public class Reader
+    {
+        public int id;
+        public string fio;
+        public string dBirthday;
+        public string telNumber;
+        public int readerTicket;
+        public string[] currentBooks;
+        public string[] lastBooks;
+
+        public Reader() //в конструкторе не объявлены данные о текущих взятых книгах и о прошлых взятых книгах. Из логики, что при заведении нового читателя он еще ничего не брал
+        {
+            id = 0;
+            fio = "ФИО читателя";
+            dBirthday = "Дата рождения";
+            telNumber = "Контактный номер";
+            readerTicket = 0;
+        }
+
+        public Reader(int id, string fio, string dBirthday, string telNumber, int readerTicket)
+        {
+            this.id = id;
+            this.fio = fio;
+            this.dBirthday = dBirthday;
+            this.telNumber = telNumber;
+            this.readerTicket = readerTicket;
+        }
+    }
 }
