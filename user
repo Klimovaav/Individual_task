@@ -9,16 +9,17 @@
 
 class user
 {
-    private string login;
-    private string parol;
-    private int id;
+    public string login;
+    public string parol;
+    public int id;
     // поля класса
 
-    // конструктор
-    private user(string MyLogin, string MyParol, int MyID)
+    
+    public user(string login, string parol, int id) // конструктор класса с параметрами
     {
-        login = MyLogin;
-        parol = MyParol;
-        id = MyID;
+        this.login = id;
+        this.parol = id;
+        this.id = id;
     }
 }
+
